@@ -13,10 +13,12 @@ import java.util.concurrent.TimeUnit;
 import org.apache.log4j.Logger;
 
 
-
+/**
+ * http://www.cnblogs.com/woshimrf/p/4943339.html?utm_source=tuicool&utm_medium=referral
+ */
 public class TokenUtil {
 
-    private static final int INTERVAL = 7;// token过期时间间隔 天
+    private static final int INTERVAL = 1;// token过期时间间隔 天
     private static final String YAN = "testMRf1$789787aadfjkds//*-+'[]jfeu;384785*^*&%^%$%";// 加盐
     private static final int HOUR = 3;// 检查token过期线程执行时间 时
     

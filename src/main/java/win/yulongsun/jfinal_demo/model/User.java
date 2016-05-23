@@ -7,5 +7,9 @@ import win.yulongsun.jfinal_demo.model.base.BaseUser;
  */
 @SuppressWarnings("serial")
 public class User extends BaseUser<User> {
-	public static final User dao = new User();
+    public static final User dao = new User();
+
+    public User findByName(String user_name) {
+        return findFirst("SELECT * FROM `user` WHERE user_name=?", user_name);
+    }
 }

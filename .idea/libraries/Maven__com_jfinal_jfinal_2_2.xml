@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Maven: com.jfinal:jfinal:2.2">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/jfinal/jfinal/2.2/jfinal-2.2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/jfinal/jfinal/2.2/jfinal-2.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/jfinal/jfinal/2.2/jfinal-2.2-sources.jar!/" />
+      <root url="jar://$USER_HOME$/OneDrive/Jfinal/jfinal框架/jfinal-2.2-all/jfinal-2.2-src.zip!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -8,6 +8,8 @@ import com.jfinal.upload.UploadFile;
 import javafx.geometry.Pos;
 import win.yulongsun.jfinal_demo.model.User;
 import win.yulongsun.jfinal_demo.util.Response;
+import win.yulongsun.jfinal_demo.util.Token;
+import win.yulongsun.jfinal_demo.util.TokenUtil;
 import win.yulongsun.jfinal_demo.util.ValidateUtils;
 
 import java.util.List;
@@ -44,8 +46,29 @@ public class UserController extends Controller {
     }
 
     public void login() {
-        createToken("token_1", 1 * 60);
-        boolean isExist = validateToken("token_1");
+        response = new Response();
+        String  user_name = getPara("user_name");
+        String  user_pwd  = getPara("user_pwd");
+        boolean isNull    = ValidateUtils.validatePara(user_name, user_pwd);
+        if (isNull) {
+            response.setFailureResponse(Response.ErrorCode.REQUEST_NULL);
+            renderJson(response);
+            return;
+        }
+        User user = User.dao.findByName(user_name);
+        if (user == null) {
+            response.setFailureResponse(Response.ErrorCode.USER_NULL);
+        } else {
+            if (user.getUserPwd().equals(user_pwd)) {
+                String signature = TokenUtil.generateToken(user.getId().toString(), user.getId()).getSignature();
+                user.setToken(signature);
+                user.update();
+                response.setSuccessResponse("登陆成功", signature);
+            } else {
+                response.setFailureResponse(Response.ErrorCode.ERROR_PWD);
+            }
+        }
+        renderJson(response);
     }
 
     @Before(POST.class)

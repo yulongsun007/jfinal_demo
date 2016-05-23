@@ -80,6 +80,13 @@ public class Response {
         this.result = "";
     }
 
+    public void setSuccessResponse(String msg, Object result) {
+        this.error = false;
+        this.errorCode = 0;
+        this.errorMsg = msg;
+        this.result = result;
+    }
+
     public boolean isError() {
         return error;
     }
